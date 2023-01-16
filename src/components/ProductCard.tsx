@@ -11,7 +11,7 @@ import {
   StyledCardActions,
   StyledCardDescription,
   StyledCardTitle,
-} from './Card';
+} from './styled';
 
 interface ProductCardProps {
   product: Product;

@@ -1,16 +1,6 @@
 import { useContext } from 'react';
-import styled from 'styled-components';
 import OrderContext from '../context/OrderContext';
-
-const StyledHeader = styled.header`
-  background: red;
-  padding: 25px;
-`;
-
-const StyledHeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+import { StyledHeader, StyledHeaderContainer } from './styled';
 
 export function Header() {
   const { items } = useContext(OrderContext);

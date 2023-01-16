@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../graphql/queries';
-import { Container } from './Container';
-import { ListContainer } from './ListContainer';
+import { Container } from './styled';
+import { ListContainer } from './styled/ListContainer';
 import { ProductCard } from './ProductCard';
 
 export function ProductList() {
