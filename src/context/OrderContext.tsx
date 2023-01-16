@@ -12,6 +12,7 @@ export type Order = OrderProduct[];
 export type OrderContextType = {
   items: Order;
   addToOrder: (newProd: OrderProduct) => void;
+  removeFromOrder: (id: string) => void;
 };
 
 const OrderContext = createContext<OrderContextType>({} as OrderContextType);
@@ -20,11 +21,15 @@ export function OrderProvider({ children }: { children: JSX.Element }) {
   const [items, setItems] = useStateWithStorage('order', []);
 
   const addToOrder = ({ id, name, price }: OrderProduct) => {
-    setItems((prevItems: Order) => [...prevItems, { id, name, price }]);
+    setItems((prevOrder: Order) => [...prevOrder, { id, name, price }]);
+  };
+
+  const removeFromOrder = (id: string) => {
+    setItems((prevOrder: Order) => prevOrder.filter((item) => item.id !== id));
   };
 
   return (
-    <OrderContext.Provider value={{ items, addToOrder }}>
+    <OrderContext.Provider value={{ items, addToOrder, removeFromOrder }}>
       {children}
     </OrderContext.Provider>
   );

@@ -19,7 +19,7 @@ export function ProductCard(props: ProductCardProps) {
   const {
     product: { id, name, assets, description, variants },
   } = props;
-  const { items, addToOrder } = useContext(OrderContext);
+  const { items, addToOrder, removeFromOrder } = useContext(OrderContext);
 
   const isProductInOrder = items.some((item) => item.id === id);
 
@@ -37,6 +37,10 @@ export function ProductCard(props: ProductCardProps) {
 
   const handleAddToOrder = () => {
     addToOrder({ id, price, name });
+  };
+
+  const handleRemoveFromOrder = () => {
+    removeFromOrder(id);
   };
 
   return (
@@ -59,7 +63,9 @@ export function ProductCard(props: ProductCardProps) {
             Buy
           </BuyButton>
         ) : (
-          <RemoveButton color="error">Remove</RemoveButton>
+          <RemoveButton onClick={() => handleRemoveFromOrder()} color="error">
+            Remove
+          </RemoveButton>
         )}
         <Typography>{formattedPrice}</Typography>
       </StyledCardActions>

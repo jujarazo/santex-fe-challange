@@ -36,5 +36,3 @@ export const CORE_PRODUCT_FIELDS = gql`
     }
   }
 `;
-
-console.log(CORE_PRODUCT_FIELDS);

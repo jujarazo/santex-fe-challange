@@ -15,10 +15,12 @@ const StyledHeaderContainer = styled.div`
 export function Header() {
   const { items } = useContext(OrderContext);
 
+  // Initial value in case that no products are in the current order
+  const orderInitialValue = { price: 0 };
   const orderTotal = items.reduce((totalAcc, item) => {
     totalAcc.price = totalAcc.price + item.price;
     return totalAcc;
-  }).price;
+  }, orderInitialValue).price;
 
   const orderTotalFormatted = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -33,7 +35,7 @@ export function Header() {
           alt="logo"
         />
         <div>
-          <div>$ {orderTotalFormatted}</div>
+          <div>{orderTotalFormatted}</div>
           <div>Products: {items.length}</div>
         </div>
       </StyledHeaderContainer>
