@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const CORE_ASSET_FIELDS = gql`
-  fragment CoreAssetFields on Product {
+  fragment CoreAssetFields on Asset {
     id
     name
     type
@@ -10,7 +10,7 @@ export const CORE_ASSET_FIELDS = gql`
 `;
 
 export const CORE_VARIANT_FIELDS = gql`
-  fragment CoreVariantFields on Product {
+  fragment CoreVariantFields on ProductVariant {
     id
     price
     stockLevel
@@ -18,6 +18,8 @@ export const CORE_VARIANT_FIELDS = gql`
 `;
 
 export const CORE_PRODUCT_FIELDS = gql`
+  ${CORE_ASSET_FIELDS}
+  ${CORE_VARIANT_FIELDS}
   fragment CoreProductFields on Product {
     id
     name
@@ -26,6 +28,12 @@ export const CORE_PRODUCT_FIELDS = gql`
     customFields
     createdAt
     updatedAt
+    assets {
+      ...CoreAssetFields
+    }
+    variants {
+      ...CoreVariantFields
+    }
   }
 `;
 

@@ -1,10 +1,16 @@
-import { Button, CardActions, Typography } from '@mui/material';
+import { Button, Card, CardActions, Typography } from '@mui/material';
 import styled from 'styled-components';
+
+export const StyledCard = styled(Card)`
+  max-width: 300px;
+  height: 410px;
+`;
 
 export const StyledCardTitle = styled(Typography)`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-bottom: 20px;
 `;
 
 export const StyledCardDescription = styled(Typography)`
@@ -16,6 +22,9 @@ export const StyledCardDescription = styled(Typography)`
 export const StyledCardActions = styled(CardActions)`
   display: flex;
   justify-content: space-between;
+  padding: 100px;
 `;
 
 export const BuyButton = styled(Button)``;
+
+export const RemoveButton = styled(Button)``;

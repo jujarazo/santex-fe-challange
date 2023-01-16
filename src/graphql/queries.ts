@@ -36,17 +36,6 @@ export const GET_PRODUCTS: TypedDocumentNode<GetProducts> = gql`
     products {
       items {
         ...CoreProductFields
-        assets {
-          id
-          name
-          type
-          source
-        }
-        variants {
-          id
-          price
-          stockLevel
-        }
       }
     }
   }

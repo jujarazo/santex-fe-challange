@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import OrderContext from '../context/OrderContext';
 
 const StyledHeader = styled.header`
   background: red;
@@ -11,6 +13,18 @@ const StyledHeaderContainer = styled.div`
 `;
 
 export function Header() {
+  const { items } = useContext(OrderContext);
+
+  const orderTotal = items.reduce((totalAcc, item) => {
+    totalAcc.price = totalAcc.price + item.price;
+    return totalAcc;
+  }).price;
+
+  const orderTotalFormatted = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(orderTotal);
+
   return (
     <StyledHeader>
       <StyledHeaderContainer>
@@ -18,7 +32,10 @@ export function Header() {
           src="https://santex.wpengine.com/wp-content/uploads/2019/02/logo-santex@3x.png"
           alt="logo"
         />
-        <div>$ 0</div>
+        <div>
+          <div>$ {orderTotalFormatted}</div>
+          <div>Products: {items.length}</div>
+        </div>
       </StyledHeaderContainer>
     </StyledHeader>
   );
