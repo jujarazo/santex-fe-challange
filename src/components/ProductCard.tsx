@@ -45,6 +45,7 @@ export function ProductCard(props: ProductCardProps) {
   };
 
   const handleRemoveFromOrder = () => {
+    // Mutation for removing item from order goes here but can't be found in the api doc
     removeFromOrder(id);
   };
 
