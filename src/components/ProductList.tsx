@@ -17,8 +17,6 @@ export function ProductList() {
     products: { items },
   } = data;
 
-  console.log(items);
-
   return (
     <Container>
       <ListContainer>

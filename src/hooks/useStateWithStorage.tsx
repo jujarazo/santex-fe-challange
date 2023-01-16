@@ -14,7 +14,7 @@ export default function useStateWithStorage(
       const value = window.localStorage.getItem(key);
       return value ? JSON.parse(value) : defaultValue;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return defaultValue;
     }
   });
@@ -30,7 +30,7 @@ export default function useStateWithStorage(
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return [storedValue, setValue];
