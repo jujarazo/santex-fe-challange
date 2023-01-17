@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-import { CardContent, CardMedia, Typography } from '@mui/material';
+import { CardContent, Typography } from '@mui/material';
 import { useContext } from 'react';
 import OrderContext from '../context/OrderContext';
 import { ADD_ITEM_TO_ORDER } from '../graphql/mutations';
@@ -10,6 +10,7 @@ import {
   StyledCard,
   StyledCardActions,
   StyledCardDescription,
+  StyledCardMedia,
   StyledCardTitle,
 } from './styled';
 
@@ -50,15 +51,15 @@ export function ProductCard(props: ProductCardProps) {
   };
 
   return (
-    <StyledCard>
-      <CardMedia sx={{ height: 250 }} image={mediaSrc} />
+    <StyledCard data-testid={`product-${id}`}>
+      <StyledCardMedia image={mediaSrc} />
       <CardContent>
         <StyledCardTitle variant="h5">{name}</StyledCardTitle>
         <StyledCardDescription variant="body2">
           {description}
         </StyledCardDescription>
       </CardContent>
-      <StyledCardActions sx={{ padding: 2 }}>
+      <StyledCardActions>
         {error ? (
           <div>{error.message}</div>
         ) : !isProductInOrder ? (

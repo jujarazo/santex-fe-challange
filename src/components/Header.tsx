@@ -25,8 +25,11 @@ export function Header() {
           alt="logo"
         />
         <div>
-          <div>{orderTotalFormatted}</div>
-          <div>Products: {items.length}</div>
+          <div data-testid="header-order-total">{orderTotalFormatted}</div>
+          <div data-testid="header-products">
+            Products:{' '}
+            <span data-testid="header-products-quantity">{items.length}</span>
+          </div>
         </div>
       </StyledHeaderContainer>
     </StyledHeader>

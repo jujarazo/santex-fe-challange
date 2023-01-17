@@ -21,6 +21,7 @@ export type Asset = {
   id: string;
   name: string;
   source: string;
+  type: string;
 };
 
 export type Variant = {

@@ -7,11 +7,11 @@ import { ProductCard } from './ProductCard';
 export function ProductList() {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p data-testid="products-loading">Loading...</p>;
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p data-testid="products-error">Error: {error.message}</p>;
 
-  if (!data) return <p>Error</p>;
+  if (!data) return <p data-testid="products-internal-error">Error</p>;
 
   const {
     products: { items },
@@ -19,7 +19,7 @@ export function ProductList() {
 
   return (
     <Container>
-      <ListContainer>
+      <ListContainer data-testid="products">
         {items &&
           items.map((item) => (
             <ProductCard key={`${item.name}-${item.id}`} product={item} />
