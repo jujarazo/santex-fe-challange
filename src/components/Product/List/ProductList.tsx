@@ -1,8 +1,8 @@
 import { useQuery } from '@apollo/client';
-import { GET_PRODUCTS } from '../graphql/queries';
-import { Container } from './styled';
-import { ListContainer } from './styled/ListContainer';
-import { ProductCard } from './ProductCard';
+import { GET_PRODUCTS } from '../../../graphql/queries';
+import { Container } from '../../styled';
+import { ListContainer } from '../../styled/ListContainer';
+import { ProductCard } from '../Card';
 
 export function ProductList() {
   const { loading, error, data } = useQuery(GET_PRODUCTS);

@@ -1,18 +1,16 @@
-import { MockedProvider } from "@apollo/client/testing";
+import { MockedProvider } from '@apollo/client/testing';
 import { render, screen, waitFor, act } from '@testing-library/react';
-import { ProductList } from '../../src/components/ProductList';
-import { OrderProvider } from '../../src/context/OrderContext';
+import { ProductList } from './ProductList';
+import { OrderProvider } from '../../../context/OrderContext';
 
 describe('components', () => {
-
   describe('product list', () => {
-
     it('should render component with error when not handle request', async () => {
       act(() => {
         render(
           <MockedProvider mocks={[]} addTypename={false}>
             <OrderProvider>
-              <ProductList/>
+              <ProductList />
             </OrderProvider>
           </MockedProvider>
         );
@@ -24,7 +22,5 @@ describe('components', () => {
         expect(screen.getByTestId('products-error')).toBeInTheDocument();
       });
     });
-
   });
-
 });

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import OrderContext from '../context/OrderContext';
-import { StyledHeader, StyledHeaderContainer } from './styled';
+import OrderContext from '../../context/OrderContext';
+import { StyledHeader, StyledHeaderContainer } from '../styled';
 
 export function Header() {
   const { items } = useContext(OrderContext);

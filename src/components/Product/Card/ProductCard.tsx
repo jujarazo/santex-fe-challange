@@ -1,9 +1,8 @@
 import { useMutation } from '@apollo/client';
 import { CardContent, Typography } from '@mui/material';
 import { useContext } from 'react';
-import OrderContext from '../context/OrderContext';
-import { ADD_ITEM_TO_ORDER } from '../graphql/mutations';
-import { Product } from '../graphql/queries';
+import OrderContext from '../../../context/OrderContext';
+import { ADD_ITEM_TO_ORDER, Product } from '../../../graphql';
 import {
   BuyButton,
   RemoveButton,
@@ -12,7 +11,7 @@ import {
   StyledCardDescription,
   StyledCardMedia,
   StyledCardTitle,
-} from './styled';
+} from '../../styled';
 
 interface ProductCardProps {
   product: Product;
