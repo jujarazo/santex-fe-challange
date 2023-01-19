@@ -13,12 +13,8 @@ export function formatCurrencyWrapper(
   currency: CurrencyCode = 'USD',
   locale: LocaleCode = 'en-US'
 ) {
-  if (!amount) {
-    return '';
-  }
-
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency,
-  }).format(amount);
+  }).format(amount || 0);
 }
