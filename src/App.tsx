@@ -1,5 +1,4 @@
-import { Header } from './components/Header';
-import { ProductList } from './components/Product/List/ProductList';
+import { Header, ProductList } from './components';
 import { OrderProvider } from './context';
 
 function App() {
