@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import OrderContext from '../../context/OrderContext';
+import { formatCurrencyWrapper } from '../../helpers';
 import { StyledHeader, StyledHeaderContainer } from '../styled';
 
 export function Header() {
@@ -12,10 +13,7 @@ export function Header() {
     return totalAcc;
   }, orderInitialValue).price;
 
-  const orderTotalFormatted = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(orderTotal);
+  const orderTotalFormatted = formatCurrencyWrapper(orderTotal);
 
   return (
     <StyledHeader>

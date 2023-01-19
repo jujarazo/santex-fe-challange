@@ -3,6 +3,7 @@ import { CardContent, Typography } from '@mui/material';
 import { useContext } from 'react';
 import OrderContext from '../../../context/OrderContext';
 import { ADD_ITEM_TO_ORDER, Product } from '../../../graphql';
+import { formatCurrencyWrapper } from '../../../helpers';
 import {
   BuyButton,
   RemoveButton,
@@ -32,12 +33,7 @@ export function ProductCard(props: ProductCardProps) {
     (variant) => variant.stockLevel === 'IN_STOCK'
   ) || { price: 0, id: '-1' };
 
-  const formattedPrice = price
-    ? new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(price)
-    : '';
+  const formattedPrice = formatCurrencyWrapper(price);
 
   const handleAddToOrder = () => {
     addItemToOrder({ variables: { productVariantId: variantId } });
