@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { CardContent, Typography } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import OrderContext from '../../../context/OrderContext';
 import { ADD_ITEM_TO_ORDER, Product } from '../../../graphql';
 import { formatCurrencyWrapper } from '../../../helpers';
@@ -25,9 +25,13 @@ export function ProductCard(props: ProductCardProps) {
   const { items, addToOrder, removeFromOrder } = useContext(OrderContext);
   const [addItemToOrder, { loading, error }] = useMutation(ADD_ITEM_TO_ORDER);
 
-  const isProductInOrder = items.some((item) => item.id === id);
+  // The amount of products inside of items might be too big so it is better to wrap it in a useMemo
+  const isProductInOrder = useMemo(
+    () => items.some((item) => item.id === id),
+    [items, id]
+  );
 
-  const mediaSrc = assets.length ? assets[0].source : '';
+  const mediaSrc = assets.length ? assets[0].source : './logo512.png';
 
   const { price, id: variantId } = variants.find(
     (variant) => variant.stockLevel === 'IN_STOCK'
